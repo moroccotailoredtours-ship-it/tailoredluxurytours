@@ -22,7 +22,7 @@ export default function PrivacyPage() {
           <p>Here we describe the personal information this website gathers, the reasons for it and what happens to it afterwards. Our booking conditions are on the <a href="/terms">Terms &amp; Booking Information</a> page.</p>
 
           <h2>1. Who is responsible</h2>
-          <p>{site.name} is a private tour operator in Fez, Morocco, designing and running tailor-made trips across the country. We are the same company as Morocco Tailored Tours. Using this site or sending an enquiry means you accept this policy; if you don&rsquo;t, please stop using the site.</p>
+          <p>{site.name} is a private tour operator in Fez, Morocco, designing and running tailor-made trips across the country. Using this site or sending an enquiry means you accept this policy; if you don&rsquo;t, please stop using the site.</p>
 
           <h2>2. What we collect</h2>
           <ul>

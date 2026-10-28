@@ -20,7 +20,6 @@ const glance: [string, string][] = [
   ["Languages", "English, French and Arabic"],
   ["Founder", "Omar Hafidi, born in the Fez medina"],
   ["Cancellation", "No charge up to 18 days before departure"],
-  ["Standard tours", "Morocco Tailored Tours, our other brand"],
 ];
 
 const practice = [
@@ -51,16 +50,14 @@ export default function AboutPage() {
           <Reveal className="lg:col-span-4">
             <p className="eyebrow mb-4 text-gold">At a glance</p>
             <h2>The facts, plainly</h2>
-            <p className="mt-6 text-ink-soft">Tailored Luxury Tours and Morocco Tailored Tours are the same company. Standard private tours are on Morocco Tailored Tours; the luxury journeys are planned here.</p>
+            <p className="mt-6 text-ink-soft">A private luxury tour company based in Fez, planning journeys across Morocco around one group at a time.</p>
           </Reveal>
           <dl className="border-t-2 border-ink lg:col-span-8">
             {glance.map(([k, v]) => (
               <div key={k} className="grid gap-1 border-b border-ink/15 py-5 sm:grid-cols-[12rem_1fr] sm:gap-8">
                 <dt className="eyebrow !font-sans text-gold">{k}</dt>
                 <dd className="text-lg">
-                  {k === "Standard tours" ? (
-                    <a className="underline underline-offset-4 hover:text-gold" href="https://www.moroccotailoredtours.com/" target="_blank" rel="noopener noreferrer">{v}</a>
-                  ) : v}
+                  {v}
                 </dd>
               </div>
             ))}
