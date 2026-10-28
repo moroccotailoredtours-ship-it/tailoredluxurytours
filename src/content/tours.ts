@@ -36,6 +36,11 @@ const next = (pool: string) => {
   return list[i % list.length]!;
 };
 
+/** Tours whose cover was chosen by hand instead of rotating through the theme pool. */
+const coverOverrides: Record<string, Img> = {
+  "morocco-imperial-cities-tour-7-days-from-casablanca": images.bahia,
+};
+
 function coverFor(t: Raw): Img {
   const title = t.title.toLowerCase();
   if (/family/.test(title)) return images.camel;
@@ -87,7 +92,7 @@ export const allTours: Tour[] = (generated as Raw[]).map((t) => {
     days: t.days,
     nights: t.nights,
     summary,
-    image: coverFor(t),
+    image: coverOverrides[t.slug] ?? coverFor(t),
     intro: t.intro || `This ${t.days}-day itinerary begins in ${t.start} and moves through ${list(places.slice(0, 5))}. Treat it as a starting point: dates, pace and stops can all be adjusted around you.`,
     itinerary: t.itinerary,
     destinations: t.destinations,
