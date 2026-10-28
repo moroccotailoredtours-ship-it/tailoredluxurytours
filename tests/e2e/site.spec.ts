@@ -155,15 +155,13 @@ test("tour explorer: filters narrow results, deep-link from URL, and reset", asy
   await expect(page.getByRole("group", { name: "Starting in" }).getByRole("button", { name: "Casablanca" })).toHaveAttribute("aria-pressed", "true");
 });
 
-test("tour page: itinerary expands, sub-nav appears after scrolling", async ({ page }) => {
+test("tour page: every itinerary day is always open, sub-nav appears after scrolling", async ({ page }) => {
   await page.goto("/tours/marrakech-and-desert-adventure-5-days-from-marrakech");
-  const day3 = page.getByRole("button", { name: /Day 3/ });
-  await expect(day3).toHaveAttribute("aria-expanded", "false");
-  await day3.click();
-  await expect(day3).toHaveAttribute("aria-expanded", "true");
-  await expect(page.getByRole("region", { name: "Day 3" })).toContainText("Merzouga");
-  await page.getByRole("button", { name: "Expand all" }).click();
-  await expect(page.getByRole("button", { name: "Collapse all" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Day 3/ })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Collapse all" })).toHaveCount(0);
+  const day3 = page.locator("li", { has: page.getByRole("heading", { name: /Day 3/ }) }).first();
+  await expect(day3).toContainText("Merzouga");
+  await expect(day3.locator("p")).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 1400));
   await expect(page.getByRole("navigation", { name: "On this page" })).toBeVisible();
 });
