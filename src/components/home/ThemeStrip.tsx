@@ -22,7 +22,7 @@ export function ThemeStrip({ items }: { items: ThemeTile[] }) {
             </span>
             <span className="mt-2 block text-ink-soft">{t.blurb}</span>
             <span className="eyebrow mt-4 block border-t border-ink/20 pt-3 !text-[0.7rem] text-gold-deep">
-              <span className="num">{t.count}</span> itineraries · <span className="num">{t.minDays === t.maxDays ? t.minDays : `${t.minDays}–${t.maxDays}`}</span> days
+              <span className="num">{t.count}</span> {t.count === 1 ? "itinerary" : "itineraries"} · <span className="num">{t.minDays === t.maxDays ? t.minDays : `${t.minDays}–${t.maxDays}`}</span> days
             </span>
           </Link>
         </li>
