@@ -71,15 +71,15 @@ export default function AboutPage() {
       <section className="panel panel-sand py-12 lg:py-16">
         <Container>
           <Reveal><p className="eyebrow mb-4 text-gold">What that means in practice</p><h2>How we plan your trip</h2></Reveal>
-          <dl className="mt-10 grid gap-y-10 border-t-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-y-10 border-t-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
             {practice.map(([t, d], i) => (
               <Reveal key={t} delay={i * 80} className={`pt-8 ${i ? "lg:border-l lg:pl-8" : ""} border-ink/15 lg:pr-6`}>
                 <span className="num mb-5 block font-serif text-6xl leading-none text-gold-bright">0{i + 1}</span>
-                <dt className="font-serif text-2xl">{t}</dt>
-                <dd className="mt-3 text-ink-soft">{d}</dd>
+                <h3 className="font-serif text-2xl">{t}</h3>
+                <p className="mt-3 text-ink-soft">{d}</p>
               </Reveal>
             ))}
-          </dl>
+          </div>
         </Container>
       </section>
 

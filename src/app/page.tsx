@@ -97,16 +97,16 @@ export default function HomePage() {
             </div>
             <p className="text-lg text-ink-soft lg:col-span-5">A little context makes the first conversation easier. Here is what most travellers ask us about first.</p>
           </Reveal>
-          <dl className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
             {intro.map(({ icon: Icon, title, body, href, cta }, i) => (
               <Reveal key={title} delay={i * 80} className="flex flex-col border-t-2 border-ink pt-6">
                 <Icon className="size-8 text-gold" strokeWidth={1.4} aria-hidden="true" />
-                <dt className="mt-5 font-serif text-3xl">{title}</dt>
-                <dd className="mt-3 text-ink-soft">{body}</dd>
+                <h3 className="mt-5 font-serif text-3xl">{title}</h3>
+                <p className="mt-3 text-ink-soft">{body}</p>
                 <Link href={href} className="mt-auto inline-flex self-start pt-6 items-center gap-1.5 text-sm font-semibold text-gold-deep underline underline-offset-[6px]">{cta}<ArrowUpRight className="size-4" aria-hidden="true" /></Link>
               </Reveal>
             ))}
-          </dl>
+          </div>
         </Container>
       </section>
 
@@ -259,15 +259,15 @@ export default function HomePage() {
       <section className="py-12 lg:py-16">
         <Container>
           <Reveal><SectionHeading eyebrow="The Tailored Difference" title="Why plan a trip around you, rather than a package?" /></Reveal>
-          <dl className="mt-10 grid gap-y-12 border-t-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-y-12 border-t-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
             {difference.map(([t, d], i) => (
               <Reveal key={t} delay={i * 80} className={`pt-8 ${i ? "lg:border-l lg:pl-8" : ""} border-ink/15 lg:pr-6`}>
                 <span className="num mb-6 block font-serif text-7xl leading-none text-gold-bright">0{i + 1}</span>
-                <dt className="font-serif text-2xl">{t}</dt>
-                <dd className="mt-3 text-ink-soft">{d}</dd>
+                <h3 className="font-serif text-2xl">{t}</h3>
+                <p className="mt-3 text-ink-soft">{d}</p>
               </Reveal>
             ))}
-          </dl>
+          </div>
         </Container>
       </section>
 

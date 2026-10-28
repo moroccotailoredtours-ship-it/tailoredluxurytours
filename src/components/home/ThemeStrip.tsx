@@ -11,7 +11,7 @@ export function ThemeStrip({ items }: { items: ThemeTile[] }) {
     <ul className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-14">
       {items.map((t, i) => (
         <li key={t.id}>
-          <Link href={`/tours?theme=${t.id}`} className="group block" aria-label={`${t.label} journeys: ${t.count} itineraries`}>
+          <Link href={`/tours?theme=${t.id}`} className="group block">
             <span className="relative block aspect-[3/2] overflow-hidden bg-ink">
               <Photo img={t.img} sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" className="transition-transform duration-[1400ms] group-hover:scale-[1.05]" />
               <span className="num absolute left-0 top-0 bg-forest px-3.5 py-2 font-serif text-xl text-gold-light" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>

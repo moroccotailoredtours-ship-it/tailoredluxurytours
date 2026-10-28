@@ -47,7 +47,7 @@ export function Header() {
     <>
       <header data-top={atTop && !open} className="site-header on-dark fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
         <div className="bar mx-auto flex h-16 max-w-[82rem] items-center justify-between rounded-none pl-5 pr-2.5 sm:pl-6">
-          <Link href="/" aria-label="Tailored Luxury Tours, home" className="shrink-0">
+          <Link href="/" aria-label="Tailored Luxury Tours" className="shrink-0">
             <Logo />
           </Link>
 

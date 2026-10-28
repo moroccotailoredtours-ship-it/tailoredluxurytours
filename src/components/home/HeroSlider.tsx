@@ -129,12 +129,12 @@ export function HeroSlider({ slides }: { slides: HeroSlide[] }) {
                     key={s.label}
                     type="button"
                     onClick={() => manual(i)}
-                    aria-label={`Show slide ${i + 1}: ${s.label}`}
+                    aria-label={`${pad(i + 1)} ${s.label}, show slide`}
                     aria-current={i === index}
                     className={`group relative block flex-1 overflow-hidden border text-left transition lg:w-44 lg:flex-none ${i === index ? "border-gold-light" : "border-white/30 hover:border-white"}`}
                   >
                     <span className="relative block aspect-[4/3] lg:aspect-[3/4]">
-                      <Image src={s.img.src} alt="" width={240} height={320} sizes="(min-width: 1024px) 176px, 25vw" quality={60} className={`size-full object-cover transition duration-500 ${i === index ? "" : "brightness-[0.55] group-hover:brightness-90"}`} style={{ objectPosition: s.img.focal }} />
+                      <Image src={s.img.src} alt="" width={240} height={320} loading="eager" sizes="(min-width: 1024px) 176px, 25vw" quality={60} className={`size-full object-cover transition duration-500 ${i === index ? "" : "brightness-[0.55] group-hover:brightness-90"}`} style={{ objectPosition: s.img.focal }} />
                       <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-2 pt-8 lg:p-3">
                         <span className="num block text-[0.7rem] font-bold text-gold-light">{pad(i + 1)}</span>
                         <span className="hidden text-[0.8rem] font-semibold leading-tight lg:block">{s.label}</span>
