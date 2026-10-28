@@ -19,68 +19,68 @@ export default function TermsPage() {
       <Container className="max-w-3xl pb-12">
         <div className="prose-lux widget mt-6 p-6 sm:p-10">
           <p><strong>Last updated: October 2026</strong></p>
-          <p>Please read this page before you book. How we handle your personal information is covered in our <a href="/privacy">Privacy Policy</a>.</p>
+          <p>These are the terms that apply when you book with us. The way we treat your personal data is set out separately in the <a href="/privacy">Privacy Policy</a>.</p>
 
-          <h2>1. How booking works</h2>
-          <p>Sending an enquiry through this website does not create a booking. We discuss your plans, then send one tailored proposal. A trip is confirmed only when you accept a proposal and the deposit has been paid. We confirm the exact terms of your trip in writing before you pay anything.</p>
+          <h2>1. From enquiry to booking</h2>
+          <p>An enquiry sent through this website is not a booking. We talk through your plans and then put one tailored proposal in front of you. Your trip is confirmed only once you accept that proposal and the deposit is paid. Before any payment, we set out the exact terms of your trip in writing.</p>
 
-          <h2>2. Booking and payment</h2>
+          <h2>2. Payment</h2>
           <ul>
-            <li><strong>Deposit:</strong> once you confirm an itinerary, a deposit of 20% of the trip price secures your dates. It is paid through PayPal or a payment link we send you, in euros.</li>
-            <li><strong>Balance:</strong> the remaining balance is paid on the first day of your trip, in cash, unless we agree another method in writing.</li>
-            <li><strong>Prices and currency:</strong> all prices and payments are in euros. Amounts in other currencies are approximate, based on a recent exchange rate, and shown for convenience only.</li>
-            <li><strong>Changes:</strong> itineraries are private and can be adjusted. Changes after booking are accepted where hotels, vehicles and guides allow, and any difference in cost is confirmed in writing first.</li>
+            <li><strong>Deposit:</strong> after you confirm an itinerary, 20% of the trip price reserves your dates. You pay it in euros through PayPal or a payment link we send you.</li>
+            <li><strong>Balance:</strong> the rest is due in cash on the first day of the trip, unless we agree a different method with you in writing.</li>
+            <li><strong>Currency:</strong> prices and payments are in euros. Figures shown in other currencies are estimates based on a recent exchange rate and are for convenience only.</li>
+            <li><strong>Amendments:</strong> because every itinerary is private, it can be changed. After booking, we make changes wherever hotels, vehicles and guides can accommodate them, and we confirm any difference in price in writing beforehand.</li>
           </ul>
 
-          <h2>3. What is included</h2>
-          <p>What is included in your trip is always stated in your proposal. Usually included:</p>
+          <h2>3. What the price covers</h2>
+          <p>Your proposal always states what is included. As a rule, the price covers:</p>
           <ul>
-            <li>Private air-conditioned vehicle and driver</li>
-            <li>Licensed local guide</li>
-            <li>Accommodation as in the itinerary (hotels, riads, desert camps)</li>
-            <li>Meals as stated for each tour</li>
+            <li>A private air-conditioned vehicle with a driver</li>
+            <li>A licensed local guide</li>
+            <li>Hotels, riads or desert camps as set out in the itinerary</li>
+            <li>The meals listed for each tour</li>
             <li>Camel trekking on desert tours</li>
-            <li>Fuel and transport between destinations</li>
+            <li>Fuel and transfers between destinations</li>
           </ul>
-          <p>Not included:</p>
+          <p>As a rule, it does not cover:</p>
           <ul>
             <li>Lunches and drinks, unless stated</li>
-            <li>Entry fees to monuments, museums and UNESCO sites</li>
+            <li>Entrance fees for monuments, museums and UNESCO sites</li>
             <li>Flights</li>
-            <li>Travel insurance (strongly recommended)</li>
-            <li>Personal expenses and shopping</li>
-            <li>Tips, which are discretionary</li>
+            <li>Travel insurance, which we strongly recommend</li>
+            <li>Personal spending and shopping</li>
+            <li>Tips, which are left to your discretion</li>
           </ul>
 
-          <h2>4. Cancellation policy</h2>
+          <h2>4. Cancelling a trip</h2>
           <ul>
-            <li><strong>18 days or more before the trip starts:</strong> free.</li>
-            <li><strong>Between 18 and 7 days before:</strong> 50% of the trip price.</li>
-            <li><strong>Fewer than 7 days before:</strong> the full amount.</li>
+            <li><strong>At least 18 days before the start:</strong> no charge.</li>
+            <li><strong>From 18 down to 7 days before:</strong> half the trip price.</li>
+            <li><strong>Under 7 days before:</strong> the whole amount.</li>
           </ul>
-          <p>We recommend comprehensive travel insurance with trip cancellation cover before you book.</p>
+          <p>Please take out full travel insurance that covers trip cancellation before you book.</p>
 
-          <h2>5. Travelling with children</h2>
-          <p>Families are welcome, and we adapt the pace, activities and meals. Please give children&rsquo;s ages when you enquire. Children must be accompanied by a parent or legal guardian at all times.</p>
+          <h2>5. Families and children</h2>
+          <p>We welcome families and adjust the pace, activities and meals to suit. Tell us the children&rsquo;s ages when you enquire. A child must always be with a parent or legal guardian.</p>
           <ul>
-            <li><strong>Under 5:</strong> free, sharing a bed with parents or guardians.</li>
-            <li><strong>5 to 11:</strong> 30% discount on the standard price.</li>
-            <li><strong>12 and over:</strong> standard adult price.</li>
+            <li><strong>Under 5:</strong> no charge, sharing a bed with a parent or guardian.</li>
+            <li><strong>Ages 5 to 11:</strong> 30% off the standard price.</li>
+            <li><strong>Age 12 and above:</strong> the standard adult price.</li>
           </ul>
 
-          <h2>6. Entry requirements</h2>
-          <p>Visa rules depend on your nationality and change over time, and your passport must be valid for the period required by Moroccan authorities. Please check current requirements with an official source, such as a Moroccan embassy or consulate, before you travel. We cannot accept responsibility for travellers refused entry because of their documents.</p>
+          <h2>6. Passports and visas</h2>
+          <p>Visa requirements vary by nationality and can change, and your passport must meet the validity that Moroccan authorities require. Check the current rules with an official source, such as a Moroccan embassy or consulate, before you travel. We are not responsible if a traveller is refused entry because of their documents.</p>
 
-          <h2>7. Health and medical advice</h2>
-          <p>Please speak to your doctor or a travel clinic well before departure, and tell us about any medical condition, allergy or mobility limit when you book so we can plan around it. Anything we say about health is general guidance, not professional medical advice.</p>
+          <h2>7. Health</h2>
+          <p>See your doctor or a travel clinic well ahead of departure, and let us know when you book about any medical condition, allergy or limit on mobility so we can plan around it. What we say about health is general guidance and is not medical advice.</p>
 
-          <h2>8. Limitation of liability</h2>
-          <p>We arrange accommodation, transport and guiding as a private operator. We are not liable for loss or theft of belongings, flight delays or missed connections, events outside our control, or shortfalls by third-party suppliers beyond our reasonable control. Optional activities such as camel rides are done at your own risk. Our maximum liability is limited to the total amount you paid for the affected tour. Travel insurance is strongly recommended.</p>
+          <h2>8. Our liability</h2>
+          <p>We organise accommodation, transport and guiding as a private operator. We are not responsible for lost or stolen belongings, flight delays or missed connections, events beyond our control, or failings by third-party suppliers that we could not reasonably prevent. Optional activities, such as camel rides, are undertaken at your own risk. Our liability is capped at the total you paid for the trip concerned. We strongly recommend travel insurance.</p>
 
-          <h2>9. Changes to these terms</h2>
-          <p>We may update this page and will show the date above when we do. A booking you have already confirmed stays under the terms in force when it was confirmed.</p>
+          <h2>9. Updates to these terms</h2>
+          <p>We may revise this page, and the date above will change when we do. A confirmed booking stays subject to the terms that applied on the day it was confirmed.</p>
 
-          <h2>10. Contact us</h2>
+          <h2>10. Contact</h2>
           <p>
             {site.name}, Fez, Morocco<br />
             {site.contactEmail && <>Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a><br /></>}

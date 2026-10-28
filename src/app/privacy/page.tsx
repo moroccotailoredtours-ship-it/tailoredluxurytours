@@ -19,60 +19,60 @@ export default function PrivacyPage() {
       <Container className="max-w-3xl pb-12">
         <div className="prose-lux widget mt-6 p-6 sm:p-10">
           <p><strong>Last updated: October 2026</strong></p>
-          <p>This page explains what information we collect through this website, why, and how we use it. Our booking terms are on the <a href="/terms">Terms &amp; Booking Information</a> page.</p>
+          <p>Here we describe the personal information this website gathers, the reasons for it and what happens to it afterwards. Our booking conditions are on the <a href="/terms">Terms &amp; Booking Information</a> page.</p>
 
-          <h2>1. Who we are</h2>
-          <p>{site.name} is a private tour operator based in Fez, Morocco, that plans and runs tailor-made tours across Morocco. We are the same company as Morocco Tailored Tours. By using this site or sending us an enquiry you agree to this policy. If you do not agree, please stop using the site.</p>
+          <h2>1. Who is responsible</h2>
+          <p>{site.name} is a private tour operator in Fez, Morocco, designing and running tailor-made trips across the country. We are the same company as Morocco Tailored Tours. Using this site or sending an enquiry means you accept this policy; if you don&rsquo;t, please stop using the site.</p>
 
-          <h2>2. Information we collect</h2>
+          <h2>2. What we collect</h2>
           <ul>
-            <li><strong>Contact details:</strong> your name, email address and, if you give it, your phone or WhatsApp number.</li>
-            <li><strong>Trip details:</strong> destinations, dates, trip length, group size and who is travelling, interests, budget, the country you travel from, and any message or notes you add.</li>
-            <li><strong>Messages:</strong> what you send us by form, email or WhatsApp, including special requirements.</li>
-            <li><strong>Technical data:</strong> the site&rsquo;s servers may process your IP address to deliver pages and to limit spam. We use it for short-term rate limiting only.</li>
-            <li><strong>Payments:</strong> we do not collect or store card numbers on this website. Deposits are paid through PayPal or a payment link we send you, which have their own privacy policies.</li>
+            <li><strong>Contact details:</strong> your name and email address, plus a phone or WhatsApp number if you choose to give one.</li>
+            <li><strong>Trip details:</strong> where and when you want to travel, for how long, how many of you are going, your interests and budget, the country you are travelling from, and anything you add in your message.</li>
+            <li><strong>Correspondence:</strong> whatever you send us through the form, by email or on WhatsApp, including special requirements.</li>
+            <li><strong>Technical data:</strong> our servers may handle your IP address in order to serve pages and block spam. We use it only for short-lived rate limiting.</li>
+            <li><strong>Payments:</strong> this website never collects or stores card numbers. Deposits are taken through PayPal or a payment link we send, and those services have their own privacy policies.</li>
           </ul>
 
-          <h2>3. How we use your information</h2>
+          <h2>3. Why we use it</h2>
           <ul>
-            <li><strong>Tour planning:</strong> to answer your enquiry and build a personal itinerary.</li>
-            <li><strong>Communication:</strong> to contact you about your booking and answer your questions.</li>
-            <li><strong>Booking management:</strong> to process the deposit, confirm reservations and manage your trip.</li>
-            <li><strong>Safety and legal:</strong> to meet the requirements that apply to a tour operator in Morocco, and to protect the site from spam and abuse.</li>
-            <li><strong>Travel updates:</strong> only if you ask for them. You can unsubscribe at any time.</li>
+            <li><strong>Planning your trip:</strong> replying to your enquiry and drawing up a personal itinerary.</li>
+            <li><strong>Staying in touch:</strong> writing to you about your booking and answering questions.</li>
+            <li><strong>Managing the booking:</strong> taking the deposit, confirming reservations and running your trip.</li>
+            <li><strong>Safety, legal and security:</strong> meeting the rules that apply to a tour operator in Morocco and keeping the site free of spam and abuse.</li>
+            <li><strong>Updates:</strong> sending travel news only if you ask, with the option to unsubscribe whenever you like.</li>
           </ul>
 
-          <h2>4. Data sharing</h2>
-          <p>We do not sell, trade or rent your information. We share it only with:</p>
+          <h2>4. Who else sees it</h2>
+          <p>We never sell, trade or rent personal information. We pass it on only to:</p>
           <ul>
-            <li><strong>Guides, drivers and hotels:</strong> the details they need to look after you, such as your name, group size, dietary needs, arrival details and dates.</li>
-            <li><strong>Service providers:</strong> Resend delivers your enquiry to our inbox by email, Vercel hosts the site, and PayPal processes deposits. Each handles your information only to provide that service.{site.plausibleDomain ? " Plausible Analytics provides cookie-free site statistics and never receives your name, email or message." : ""}</li>
-            <li><strong>Authorities:</strong> where the law requires it.</li>
+            <li><strong>Guides, drivers and hotels:</strong> the information they need to look after you, for example your name, party size, dietary needs, arrival details and dates.</li>
+            <li><strong>Service providers:</strong> Resend sends your enquiry to our inbox, Vercel hosts the site and PayPal handles deposits. Each uses your data only to deliver its service.{site.plausibleDomain ? " Plausible Analytics supplies cookie-free statistics and never receives your name, email or message." : ""}</li>
+            <li><strong>Authorities:</strong> when the law obliges us to.</li>
           </ul>
-          <p>Links to other sites are governed by their own privacy policies.</p>
+          <p>Other websites we link to have their own privacy policies.</p>
 
           <h2>5. Cookies</h2>
-          <p>{site.plausibleDomain ? "This site does not set advertising or remarketing cookies. Our analytics service does not use cookies." : "This site does not set analytics, advertising or remarketing cookies."} The site works without cookies. You can also block or delete cookies in your browser settings.</p>
+          <p>{site.plausibleDomain ? "We set no advertising or remarketing cookies, and our analytics service uses none either." : "We set no analytics, advertising or remarketing cookies."} The site works fine without cookies, and you can block or delete them in your browser settings at any time.</p>
 
           <h2>6. Your rights</h2>
-          <p>Wherever you live, and in particular if you are in the EU or UK, you have these rights:</p>
+          <p>Wherever you live, and especially in the EU or UK, you can:</p>
           <ul>
-            <li><strong>Access:</strong> ask what information we hold about you.</li>
-            <li><strong>Rectification:</strong> ask us to correct anything that is wrong.</li>
-            <li><strong>Erasure:</strong> ask us to delete your information.</li>
-            <li><strong>Restriction:</strong> ask us to limit how we use it.</li>
-            <li><strong>Portability:</strong> ask for a copy in a common format.</li>
-            <li><strong>Objection:</strong> object to us using your information for marketing.</li>
+            <li><strong>Access</strong> the information we hold about you.</li>
+            <li><strong>Correct</strong> anything inaccurate.</li>
+            <li><strong>Erase</strong> your information.</li>
+            <li><strong>Restrict</strong> how we use it.</li>
+            <li><strong>Port</strong> it, by asking for a copy in a common format.</li>
+            <li><strong>Object</strong> to its use for marketing.</li>
           </ul>
-          <p>To use any of them, email {site.contactEmail ? <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> : "us"}.</p>
+          <p>To exercise any of these rights, email {site.contactEmail ? <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> : "us"}.</p>
 
-          <h2>7. Data security and retention</h2>
-          <p>The site is served over HTTPS, and only the people who need your details to organise your trip see them. We keep enquiry and booking records for as long as needed to deliver your trip and meet legal or accounting requirements, and delete them on request after that.</p>
+          <h2>7. Security and how long we keep data</h2>
+          <p>The site uses HTTPS, and your details are visible only to the people who need them to arrange your trip. Enquiry and booking records are kept for as long as we need them to deliver the trip and to meet legal and accounting duties; after that we delete them if you ask.</p>
 
-          <h2>8. Changes to this policy</h2>
-          <p>We may update this page and will show the date above when we do. Continued use of the site means you accept the update.</p>
+          <h2>8. Updates to this policy</h2>
+          <p>We may revise this page, and the date above will change when we do. Carrying on using the site means you accept the revised version.</p>
 
-          <h2>9. Contact us</h2>
+          <h2>9. Contact</h2>
           <p>
             {site.name}, Fez, Morocco<br />
             {site.contactEmail && <>Email: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a><br /></>}
