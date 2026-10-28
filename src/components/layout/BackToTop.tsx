@@ -26,7 +26,7 @@ export function BackToTop() {
       aria-label="Back to top"
       tabIndex={show ? 0 : -1}
       aria-hidden={!show}
-      className={`fixed bottom-24 left-4 z-40 inline-flex size-12 items-center justify-center border border-gold-light/60 bg-forest text-gold-light shadow-[0_12px_30px_-12px_rgb(10_28_24/0.7)] transition duration-300 hover:bg-gold hover:text-white lg:bottom-8 lg:left-8 ${show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"}`}
+      className={`fixed bottom-24 left-4 z-40 hidden lg:inline-flex size-12 items-center justify-center border border-gold-light/60 bg-forest text-gold-light shadow-[0_12px_30px_-12px_rgb(10_28_24/0.7)] transition duration-300 hover:bg-gold hover:text-white lg:bottom-8 lg:left-8 ${show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"}`}
     >
       <ArrowUp className="size-5" aria-hidden="true" />
     </button>
