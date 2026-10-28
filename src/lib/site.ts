@@ -26,7 +26,7 @@ export const site = {
   whatsappMessage:
     "Hello, I’m interested in planning a tailor-made trip to Morocco. I’d love to discuss my travel dates and preferences.",
   /** Verified social profile URLs. Empty until the business provides them. */
-  social: [] as { label: string; href: string }[],
+  social: [{ label: "TripAdvisor", href: "https://www.tripadvisor.com/Attraction_Review-g293733-d25463931-Reviews-Morocco_Tailored_Tours-Fez_Fez_Meknes.html" }] as { label: string; href: string }[],
   /** Business details NOT yet provided. Never rendered as fact. */
   unconfirmed: {
     legalName: "",
