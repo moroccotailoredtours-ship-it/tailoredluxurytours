@@ -51,13 +51,13 @@ export function Header() {
             <Logo />
           </Link>
 
-          <nav aria-label="Primary" className="hidden items-center gap-1 xl:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex xl:gap-1">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className="rounded-none px-4 py-2 text-[0.92rem] font-medium transition-colors hover:bg-white/10 aria-[current=page]:bg-gold-bright/20 aria-[current=page]:text-gold-light"
+                className="rounded-none px-2.5 py-2 text-[0.92rem] xl:px-4 font-medium transition-colors hover:bg-white/10 aria-[current=page]:bg-gold-bright/20 aria-[current=page]:text-gold-light"
               >
                 {item.label}
               </Link>
@@ -73,7 +73,7 @@ export function Header() {
             <button
               ref={toggleRef}
               type="button"
-              className="inline-flex size-11 items-center justify-center rounded-full hover:bg-current/10 xl:hidden"
+              className="inline-flex size-11 items-center justify-center rounded-full hover:bg-current/10 lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label="Open menu"
