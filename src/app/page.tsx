@@ -45,7 +45,7 @@ const steps = [
 
 const themeTiles = [
   { id: "desert", label: "Desert", blurb: "Dunes, camel treks and nights under the stars.", img: images.saharaDune },
-  { id: "imperial", label: "Imperial cities", blurb: "Medinas, madrasas and palaces of Fez and Marrakech.", img: images.fezGate },
+  { id: "imperial", label: "Imperial cities", blurb: "Medinas, madrasas and palaces of Fez and Marrakech.", img: images.fezMadrasa },
   { id: "mountains", label: "Mountains", blurb: "Atlas valleys, villages and high passes.", img: images.atlasValley },
   { id: "coast", label: "Coast", blurb: "Atlantic light, ramparts and fishing ports.", img: images.essaouiraCoast },
   { id: "family", label: "Family", blurb: "Journeys paced for travelling together.", img: images.camel },
