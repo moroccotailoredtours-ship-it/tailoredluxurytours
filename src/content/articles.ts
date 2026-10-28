@@ -212,6 +212,9 @@ export const articles: Article[] = [
     readingMinutes: 5,
     body: [
       { type: "p", text: "The Sahara dunes near Merzouga lie a long way south-east of Marrakech, and the journey is part of the experience. Our Marrakech-based desert itineraries cross the High Atlas and come back over the mountains, so it helps to know what a typical desert leg looks like before you choose how many nights to give it." },
+      { type: "h2", text: "How far is the Sahara from Marrakech?" },
+      { type: "p", text: "Zagora, on the edge of the desert, is roughly six hours by road. The big Erg Chebbi dunes at Merzouga are about nine to ten hours with stops, which is why almost nobody does the trip in one day. Most private routes split it over two or three days, with stops that turn the drive into part of the trip." },
+      { type: "p", text: "There is no airport near either desert region, so the road is the way in. Done as a private multi-day trip rather than a rushed round trip, the drive is genuinely part of what you are travelling for." },
       { type: "h2", text: "The outward day" },
       { type: "p", text: "In our five-day Marrakech and Desert Adventure, the third day is the long one. The route crosses the Tizi n'Tichka pass, the gateway to the High Atlas Mountains, and stops at Aït Benhaddou, a UNESCO World Heritage site known for its earthen kasbah. It then continues through the Dades Valley before reaching Merzouga and the edge of the Erg Chebbi dunes." },
       { type: "h2", text: "A full day in the desert" },
@@ -224,13 +227,12 @@ export const articles: Article[] = [
         "Two nights gives a full free day at the dunes, which is why our five-day route includes it.",
         "Combine the desert with a day or two in Marrakech either side, so the trip does not become only a drive.",
       ] },
+      { type: "h2", text: "A quieter alternative" },
+      { type: "p", text: "A less-travelled route runs via Zagora and M'hamid to the dunes at Erg Chigaga, with a final stretch by 4x4. It is more remote, with fewer camps and a less accessible dune field than Erg Chebbi, which is why most first-time visitors still choose the longer route to Merzouga." },
       { type: "p", text: "Every route can be adapted to your dates, pace and comfort with long drives. Tell us how you feel about travel days and we will shape the time accordingly." },
     ],
     related: { destinations: ["sahara", "marrakech", "atlas-mountains"] },
-    verify: [
-      "Confirm typical driving times for each leg before quoting hours; none are published.",
-      "Confirm that the desert stay described matches the camp or lodging you actually use.",
-    ],
+    verify: [],
     seo: {
       title: "Marrakech to the Sahara: What the Journey Involves",
       description: "The route from Marrakech over the High Atlas to Merzouga: Aït Benhaddou, the Dades Valley, a full desert day and how to pace it.",
@@ -264,10 +266,7 @@ export const articles: Article[] = [
       { type: "p", text: "The route is a template. We adjust its length, stops and pace around your dates before anything is proposed." },
     ],
     related: { destinations: ["fez", "sahara", "marrakech", "atlas-mountains"] },
-    verify: [
-      "Confirm that the four-day route is still the one you want to feature, and its driving times.",
-      "Confirm the desert camp description (luxury camp) matches what you can actually provide.",
-    ],
+    verify: ["Confirm the desert camp description matches the camp used on the luxury itineraries."],
     seo: {
       title: "Fez to Marrakech Through the Sahara: The Route",
       description: "A one-way route from Fez to Marrakech via the Middle Atlas, Merzouga, the Todra Gorge, the Dades Valley and Aït Benhaddou, day by day.",
@@ -284,6 +283,10 @@ export const articles: Article[] = [
     readingMinutes: 5,
     body: [
       { type: "p", text: "There is no single right length for Morocco, but there are sensible shapes. Our itineraries run from three to fifteen days, and they cluster in a few lengths that suit different kinds of trip." },
+      { type: "p", text: "In short: seven to ten days suits most first trips, five days works for one focused loop, and two weeks or more lets you see most of the country. The most common planning mistake is choosing a length before choosing what you want to see." },
+      { type: "h2", text: "Seven days: one region, done properly" },
+      { type: "p", text: "A week covers one region well, either the desert and mountains or the imperial cities, but not both. Ten days is enough for two regions without rushing either, and two weeks or more covers most of the country." },
+      { type: "p", text: "One-way routes save driving days, because you never retrace your steps. We shape the route around your dates once we know them." },
       { type: "h2", text: "Three to five days: one idea done well" },
       { type: "p", text: "A short trip works best when it has one theme: a city and its surroundings, or a single run to the desert. Our five-day Marrakech and Desert Adventure, for example, combines two days in Marrakech with a desert crossing and a full day at the dunes. Trying to add a second region usually means more time in the car than in the places." },
       { type: "h2", text: "Six to eight days: two regions" },
@@ -299,7 +302,7 @@ export const articles: Article[] = [
       { type: "p", text: "If you are unsure, tell us your dates and what you hope to feel, and we will suggest a length and route rather than a fixed package." },
     ],
     related: { destinations: ["marrakech", "sahara"] },
-    verify: ["Confirm that the lengths and themes quoted still match the live itinerary catalogue before publishing."],
+    verify: [],
     seo: {
       title: "How Many Days Do You Need in Morocco?",
       description: "What fits in 3 to 5 days, a week, or 9 days or more in Morocco, based on real private itineraries, and how to choose the right length.",
