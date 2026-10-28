@@ -16,8 +16,10 @@ interface PageMeta {
 export function pageMetadata({ title, description, path, image, type = "website", noindex, publishedTime }: PageMeta): Metadata {
   const url = absoluteUrl(path);
   const img = socialImage(image);
+  // Keep "| Tailored Luxury Tours" only when the whole title fits in a search result (~65 chars).
+  const branded = `${title} | ${site.name}`;
   return {
-    title,
+    title: branded.length <= 65 ? title : { absolute: title },
     description,
     alternates: { canonical: url },
     robots: noindex || !isIndexable ? { index: false, follow: false } : { index: true, follow: true },
