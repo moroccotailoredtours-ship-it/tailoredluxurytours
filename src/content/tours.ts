@@ -66,6 +66,12 @@ const expFor = (themes: Theme[]) => {
 const firstSentence = (s: string) => (s.match(/^.*?[.!?](\s|$)/)?.[0] ?? s).trim();
 const clip = (s: string, n: number) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…`);
 
+/** Search title: name, length and start city, kept short enough to show in full in results. */
+const seoTitle = (title: string, days: number, start: string) => {
+  const full = `${title}: ${days}-Day Private Tour from ${start}`;
+  return full.length <= 62 ? full : `${title}: ${days} Days from ${start}`;
+};
+
 export const allTours: Tour[] = (generated as Raw[]).map((t) => {
   const places = t.destinations.filter((d) => d !== "casablanca" || t.start === "Casablanca").map((d) => names[d] ?? d);
   const summary = t.intro
@@ -99,7 +105,7 @@ export const allTours: Tour[] = (generated as Raw[]).map((t) => {
       { q: "What do prices and inclusions look like?", a: "They depend on your dates, group size and choices, so they're set out in your proposal rather than listed here." },
     ],
     seo: {
-      title: `${heading}: ${t.days}-Day Itinerary from ${t.start}`,
+      title: seoTitle(t.title, t.days, t.start),
       description: clip(`${heading}: ${t.days} days, ${t.nights} nights from ${t.start}. ${summary} Enquire to tailor it.`, 158),
     },
   };
