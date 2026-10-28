@@ -24,7 +24,7 @@ export const site = {
   contactEmail: process.env.CONTACT_EMAIL?.trim() || "",
   whatsappNumber: digits(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER),
   whatsappMessage:
-    "Hello, Iâ€™m interested in planning a tailor-made trip to Morocco. Iâ€™d love to discuss my travel dates and preferences.",
+    "Hello, I’m interested in planning a tailor-made trip to Morocco. I’d love to discuss my travel dates and preferences.",
   /** Verified social profile URLs. Empty until the business provides them. */
   social: [] as { label: string; href: string }[],
   /** Business details NOT yet provided. Never rendered as fact. */
