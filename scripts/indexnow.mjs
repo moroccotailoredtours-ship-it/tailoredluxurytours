@@ -8,6 +8,6 @@ const urlList = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 const res = await fetch("https://api.indexnow.org/indexnow", {
   method: "POST",
   headers: { "content-type": "application/json; charset=utf-8" },
-  body: JSON.stringify({ host, key, keyLocation: `https://${host}/indexnow-key.txt`, urlList }),
+  body: JSON.stringify({ host, key, keyLocation: `https://${host}/${key}.txt`, urlList }),
 });
 console.log(res.status, res.statusText, `${urlList.length} URLs`);
