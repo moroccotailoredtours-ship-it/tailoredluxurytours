@@ -73,3 +73,7 @@ Preview deployments are automatically `noindex`.
 - **Programmatic pages** (`src/content/collections.ts`): `/tours/from/<city>`, `/tours/style/<style>`, `/tours/length/<range>` and `/tours/from/<city>/<style>`. A page exists only when at least 3 itineraries match (4 for city+style), and every figure is computed from the catalogue. Tests in `tests/geo.test.ts` enforce this, plus unique titles and descriptions.
 - **Blog**: `src/content/articles.ts`. New route and planning guides are written only from the owner's itineraries and carry `verify` notes to check before relying on them.
 - Not done: Search Console submission, Core Web Vitals measurement and rich-result validation in Google's tool (needs the live site).
+
+### Other search engines (verification and IndexNow)
+
+Set `BING_SITE_VERIFICATION`, `YANDEX_SITE_VERIFICATION`, `BAIDU_SITE_VERIFICATION` and `NAVER_SITE_VERIFICATION` (plus `GOOGLE_SITE_VERIFICATION`) to the tokens each webmaster portal gives you; the matching meta tags appear only when set. Verifying and submitting `/sitemap.xml` in each portal needs the owner's account and is not done by the code. Set `INDEXNOW_KEY` to serve the ownership file at `/indexnow-key.txt`, then run `node scripts/indexnow.mjs` after a deploy to notify Bing, Yandex, Naver and Seznam. Google does not support IndexNow. No ranking or indexing outcome is guaranteed.

@@ -36,6 +36,11 @@ export const site = {
   },
   plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN?.trim() || "",
   googleVerification: process.env.GOOGLE_SITE_VERIFICATION?.trim() || "",
+  bingVerification: process.env.BING_SITE_VERIFICATION?.trim() || "",
+  yandexVerification: process.env.YANDEX_SITE_VERIFICATION?.trim() || "",
+  baiduVerification: process.env.BAIDU_SITE_VERIFICATION?.trim() || "",
+  naverVerification: process.env.NAVER_SITE_VERIFICATION?.trim() || "",
+  indexNowKey: process.env.INDEXNOW_KEY?.trim() || "",
 } as const;
 
 export const nav = [

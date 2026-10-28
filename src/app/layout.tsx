@@ -20,10 +20,18 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   robots: isIndexable ? { index: true, follow: true } : { index: false, follow: false },
-  ...(site.googleVerification ? { verification: { google: site.googleVerification } } : {}),
+  verification: {
+    ...(site.googleVerification ? { google: site.googleVerification } : {}),
+    ...(site.yandexVerification ? { yandex: site.yandexVerification } : {}),
+    other: {
+      ...(site.bingVerification ? { "msvalidate.01": site.bingVerification } : {}),
+      ...(site.baiduVerification ? { "baidu-site-verification": site.baiduVerification } : {}),
+      ...(site.naverVerification ? { "naver-site-verification": site.naverVerification } : {}),
+    },
+  },
 };
 
-export const viewport: Viewport = { themeColor: "#fbf7f0", width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport: Viewport = { themeColor: "#fdfcf9", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
