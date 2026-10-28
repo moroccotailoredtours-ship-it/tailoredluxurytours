@@ -75,9 +75,14 @@ test("mobile journey: menu → tour → enquiry prefilled", async ({ page }) => 
   await expect(page.getByLabel(/Anything else/)).toHaveValue(/itinerary \(\d+ days from/);
 });
 
-test("WhatsApp CTA is hidden when no number is configured", async ({ page }) => {
+test("WhatsApp CTA only appears when a number is configured, and links to wa.me", async ({ page }) => {
   await page.goto("/contact");
-  await expect(page.getByRole("link", { name: /WhatsApp/i })).toHaveCount(0);
+  const links = page.locator('a[href^="https://wa.me/"]');
+  if (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || (await links.count()) > 0) {
+    await expect(links.first()).toHaveAttribute("href", /^https:\/\/wa\.me\/\d{8,15}\?text=/);
+  } else {
+    await expect(page.getByRole("link", { name: /WhatsApp/i })).toHaveCount(0);
+  }
 });
 
 test.describe("enquiry form", () => {

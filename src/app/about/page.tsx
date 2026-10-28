@@ -25,7 +25,7 @@ const glance: [string, string][] = [
   ["Booking", "No instant checkout. You confirm only after reviewing a proposal"],
   ["Languages", "English, French and Arabic"],
   ["Founder", "Omar Hafidi, a Fez medina native"],
-  ["Sister company", "Morocco Tailored Tours"],
+  ["Standard tours", "Morocco Tailored Tours, our other brand"],
 ];
 
 // Names, roles and places come from the owner's team page on moroccotailoredtours.com (same team). Bios here are short and rewritten so the two sites do not duplicate text.
@@ -65,7 +65,7 @@ export default function AboutPage() {
               <div key={k} className="grid gap-1 border-b border-ink/15 py-5 sm:grid-cols-[12rem_1fr] sm:gap-8">
                 <dt className="eyebrow !font-sans text-gold">{k}</dt>
                 <dd className="text-lg">
-                  {k === "Sister company" ? (
+                  {k === "Standard tours" ? (
                     <a className="underline underline-offset-4 hover:text-gold" href="https://www.moroccotailoredtours.com/" target="_blank" rel="noopener noreferrer">{v}</a>
                   ) : v}
                 </dd>
@@ -97,11 +97,11 @@ export default function AboutPage() {
             <p className="mt-6 text-lg text-ink-soft">Every itinerary is a starting point. Dates, route, pace and stops are adjusted with you before anything is confirmed, so the plan can change without starting again.</p>
           </Reveal>
           <Reveal delay={80}>
-            <h2>One team, two companies</h2>
+            <h2>One company, two brands</h2>
             <p className="mt-6 text-lg text-ink-soft">
-              The same team runs{" "}
+              Tailored Luxury Tours and{" "}
               <a className="underline underline-offset-4 hover:text-gold" href="https://www.moroccotailoredtours.com/" target="_blank" rel="noopener noreferrer">Morocco Tailored Tours</a>
-              , which offers standard private tours. Tailored Luxury Tours is where we plan the luxury journeys.
+              {" "}are the same company. Morocco Tailored Tours offers our standard private tours, and Tailored Luxury Tours is where we plan the luxury journeys.
             </p>
           </Reveal>
         </Container>
