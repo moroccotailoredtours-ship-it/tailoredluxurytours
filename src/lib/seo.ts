@@ -62,6 +62,9 @@ export const organizationLd = () => ({
       areaServed: { "@type": "Country", name: "Morocco" },
       knowsAbout: ["Private travel in Morocco", "Sahara desert journeys", "Imperial cities of Morocco", "Atlas Mountains travel", "Moroccan culture and food"],
       ...(site.contactEmail ? { email: site.contactEmail } : {}),
+      ...(site.whatsappNumber
+        ? { telephone: `+${site.whatsappNumber}`, contactPoint: { "@type": "ContactPoint", contactType: "customer service", telephone: `+${site.whatsappNumber}`, availableLanguage: ["English", "French", "Arabic"] } }
+        : {}),
       ...(site.social.length ? { sameAs: site.social.map((s) => s.href) } : {}),
     },
     {
