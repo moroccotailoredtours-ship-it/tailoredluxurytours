@@ -26,6 +26,12 @@ export interface Collection {
 
 const MIN_TOURS = 3;
 
+/** Title-case wording for page titles ("Mountain Tours", not "Mountains Tours"). */
+const styleTitle: Record<string, string> = {
+  desert: "Desert", imperial: "Imperial Cities", mountains: "Mountain", coast: "Coastal",
+  luxury: "Luxury", family: "Family", wellness: "Wellness", food: "Food",
+};
+
 const cities = [...new Set(tours.map((t) => t.start))].sort();
 const styleIds = (Object.keys(themeLabels) as (keyof typeof themeLabels)[]);
 const styleExperience: Record<string, string> = { desert: "desert-journeys", imperial: "architecture-historic-cities", mountains: "mountains-nature", food: "food-traditions" };
@@ -34,9 +40,9 @@ const stylePhrase: Record<string, string> = {
   coast: "the Atlantic coast", luxury: "comfort and a refined pace", family: "travelling as a family", wellness: "wellness and rest", food: "food and Moroccan traditions",
 };
 export const lengthBuckets = [
-  { id: "3-5-days", label: "3 to 5 days", test: (d: number) => d <= 5 },
-  { id: "6-8-days", label: "6 to 8 days", test: (d: number) => d >= 6 && d <= 8 },
-  { id: "9-plus-days", label: "9 days or more", test: (d: number) => d >= 9 },
+  { id: "3-5-days", label: "3 to 5 days", titleLabel: "3 to 5 Day", test: (d: number) => d <= 5 },
+  { id: "6-8-days", label: "6 to 8 days", titleLabel: "6 to 8 Day", test: (d: number) => d >= 6 && d <= 8 },
+  { id: "9-plus-days", label: "9 days or more", titleLabel: "9+ Day", test: (d: number) => d >= 9 },
 ];
 
 const list = (xs: string[]) => (xs.length > 1 ? `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}` : (xs[0] ?? ""));
@@ -97,17 +103,17 @@ for (const id of styleIds) {
   const ts = tours.filter((t) => (t.themes as string[]).includes(id));
   if (ts.length < MIN_TOURS) continue;
   const exp = experiences.find((e) => e.slug === styleExperience[id]);
-  all.push(build({ kind: "style", path: `/tours/style/${id}`, label: `${themeLabels[id].toLowerCase()} journeys`, ts, lead: `${ts.length} of our ${tours.length} itineraries are shaped around ${stylePhrase[id]}.`, h1: `${themeLabels[id]} journeys in Morocco`, titleBase: `${themeLabels[id]} Tours in Morocco`, extra: exp?.summary }));
+  all.push(build({ kind: "style", path: `/tours/style/${id}`, label: `${themeLabels[id].toLowerCase()} journeys`, ts, lead: `${ts.length} of our ${tours.length} itineraries are shaped around ${stylePhrase[id]}.`, h1: `${themeLabels[id]} journeys in Morocco`, titleBase: `${styleTitle[id]} Tours in Morocco`, extra: exp?.summary }));
 }
 
 for (const b of lengthBuckets) {
   const ts = tours.filter((t) => b.test(t.days));
-  if (ts.length >= MIN_TOURS) all.push(build({ kind: "length", path: `/tours/length/${b.id}`, label: `${b.label} Morocco trips`, ts, lead: `${plural(ts.length, "private itinerary")} last ${b.label.toLowerCase()}.`, h1: `Morocco trips of ${b.label}`, titleBase: `${b.label} Morocco Tours` }));
+  if (ts.length >= MIN_TOURS) all.push(build({ kind: "length", path: `/tours/length/${b.id}`, label: `${b.label} Morocco trips`, ts, lead: `${plural(ts.length, "private itinerary")} last ${b.label.toLowerCase()}.`, h1: `Morocco trips of ${b.label}`, titleBase: `${b.titleLabel} Morocco Tours` }));
 }
 
 for (const c of cities) for (const id of styleIds) {
   const ts = tours.filter((t) => t.start === c && (t.themes as string[]).includes(id));
-  if (ts.length >= MIN_TOURS + 1) all.push(build({ kind: "city-style", path: `/tours/from/${c.toLowerCase()}/${id}`, label: `${themeLabels[id].toLowerCase()} journeys from ${c}`, ts, lead: `${ts.length} ${themeLabels[id].toLowerCase()} itineraries start in ${c}, shaped around ${stylePhrase[id]}.`, h1: `${themeLabels[id]} journeys from ${c}`, titleBase: `${themeLabels[id]} Tours from ${c}`, skipPlace: c }));
+  if (ts.length >= MIN_TOURS + 1) all.push(build({ kind: "city-style", path: `/tours/from/${c.toLowerCase()}/${id}`, label: `${themeLabels[id].toLowerCase()} journeys from ${c}`, ts, lead: `${ts.length} ${themeLabels[id].toLowerCase()} itineraries start in ${c}, shaped around ${stylePhrase[id]}.`, h1: `${themeLabels[id]} journeys from ${c}`, titleBase: `${styleTitle[id]} Tours from ${c}`, skipPlace: c }));
 }
 
 for (const c of all) {
