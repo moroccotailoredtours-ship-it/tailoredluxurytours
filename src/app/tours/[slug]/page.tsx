@@ -51,7 +51,7 @@ export default async function TourPage({ params }: Props) {
     { icon: Clock, label: "Length", value: `${tour.days} days` },
     { icon: Moon, label: "Nights", value: String(tour.nights) },
     { icon: MapPin, label: "Starts in", value: tour.start },
-    { icon: Compass, label: "Style", value: "Private & tailored" },
+    { icon: Compass, label: "Style", value: "Private" },
   ];
 
   return (
