@@ -18,18 +18,16 @@ npx playwright install chromium && npm run build && npx playwright test   # e2e 
 | Variable | Required for | Notes |
 |---|---|---|
 | `SITE_URL` | canonical URLs, sitemap | Defaults to `https://tailoredluxurytours.com`. Any other value makes the site `noindex`. |
-| `CONTACT_EMAIL` | enquiry delivery + visible contact email | Inbox that receives enquiries. |
-| `EMAIL_FROM` | enquiry delivery | Sender on a domain verified in Resend. |
-| `EMAIL_API_KEY` | enquiry delivery | Resend API key. Server-side only. |
+| `CONTACT_EMAIL` | enquiry delivery + visible contact email | Inbox that receives enquiries through FormSubmit. |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp CTAs | Digits with country code, no `+`. Empty = CTAs are hidden (never a broken link). |
 | `GOOGLE_SITE_VERIFICATION` | optional | Search Console meta tag token. |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | optional | Cookieless analytics. Empty = no script. |
 
-Until `CONTACT_EMAIL`, `EMAIL_FROM` and `EMAIL_API_KEY` are all set, `/api/enquiry` returns 503 and the form shows an error instead of success.
+Until `CONTACT_EMAIL` is set, `/api/enquiry` returns 503 and the form shows an error instead of success. FormSubmit sends a one-time activation email to that inbox after the first enquiry; click the link in it, or later enquiries are not delivered.
 
 ## Enquiry flow
 
-Form (`src/components/forms/EnquiryForm.tsx`) → client validation (Zod) → `POST /api/enquiry` → server validation, same-origin check, honeypot + minimum-fill-time trap, in-memory rate limit (5 / 10 min / IP) → Resend. Success is shown only when Resend returns 2xx. The rate limiter is per-instance memory; use a shared store (Upstash/KV) for stronger protection on serverless.
+Form (`src/components/forms/EnquiryForm.tsx`) → client validation (Zod) → `POST /api/enquiry` → server validation, same-origin check, honeypot + minimum-fill-time trap, in-memory rate limit (5 / 10 min / IP) → FormSubmit (called from the server, so the inbox address stays out of the browser). Success is shown only when FormSubmit confirms. The rate limiter is per-instance memory; use a shared store (Upstash/KV) for stronger protection on serverless.
 
 ## Content
 
@@ -60,7 +58,7 @@ Form (`src/components/forms/EnquiryForm.tsx`) → client validation (Zod) → `P
 1. Push to a Git host, import the project in Vercel.
 2. Set the environment variables above for Production.
 3. Add `tailoredluxurytours.com` (and `www`, which redirects to the apex via `next.config.ts`) under Domains and set DNS as Vercel instructs.
-4. Verify the Resend sending domain, then submit a real test enquiry.
+4. Submit a real test enquiry from the live site and click the FormSubmit activation link that arrives in the inbox.
 5. Add the property in Google Search Console, verify, submit `/sitemap.xml`.
 
 Preview deployments are automatically `noindex`.

@@ -46,7 +46,7 @@ export default function PrivacyPage() {
           <p>We never sell, trade or rent personal information. We pass it on only to:</p>
           <ul>
             <li><strong>Guides, drivers and hotels:</strong> the information they need to look after you, for example your name, party size, dietary needs, arrival details and dates.</li>
-            <li><strong>Service providers:</strong> Resend sends your enquiry to our inbox, Vercel hosts the site and PayPal handles deposits. Each uses your data only to deliver its service.{site.plausibleDomain ? " Plausible Analytics supplies cookie-free statistics and never receives your name, email or message." : ""}</li>
+            <li><strong>Service providers:</strong> FormSubmit delivers your enquiry to our inbox, Vercel hosts the site and PayPal handles deposits. Each uses your data only to deliver its service.{site.plausibleDomain ? " Plausible Analytics supplies cookie-free statistics and never receives your name, email or message." : ""}</li>
             <li><strong>Authorities:</strong> when the law obliges us to.</li>
           </ul>
           <p>Other websites we link to have their own privacy policies.</p>

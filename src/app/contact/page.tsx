@@ -22,7 +22,7 @@ export default async function ContactPage({ searchParams }: Props) {
   const tour = getTour(Array.isArray(raw) ? (raw[0] ?? "") : (raw ?? ""));
   const defaultMessage = tour ? `I'm interested in the "${tour.title}" itinerary (${tour.days} days from ${tour.start}). ` : "";
   const missing = [
-    !emailConfig() && "email delivery (CONTACT_EMAIL, EMAIL_FROM, EMAIL_API_KEY)",
+    !emailConfig() && "email delivery (CONTACT_EMAIL)",
     !whatsappHref() && "WhatsApp (NEXT_PUBLIC_WHATSAPP_NUMBER)",
   ].filter(Boolean);
 

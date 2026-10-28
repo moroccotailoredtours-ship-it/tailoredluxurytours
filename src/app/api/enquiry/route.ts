@@ -37,7 +37,7 @@ export async function POST(req: Request) {
   if (data.website || tooFast) return reply({ ok: true });
 
   if (!emailConfig()) {
-    console.error("[enquiry] Email delivery is not configured (CONTACT_EMAIL, EMAIL_FROM, EMAIL_API_KEY).");
+    console.error("[enquiry] Email delivery is not configured (CONTACT_EMAIL).");
     return reply(
       { ok: false, code: "not_configured", message: "Our enquiry form isn't fully set up yet. Please contact us by email or WhatsApp instead." },
       503,

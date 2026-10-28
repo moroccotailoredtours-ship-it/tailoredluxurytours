@@ -1,14 +1,10 @@
 import type { EnquiryInput } from "./enquiry";
 import { site } from "./site";
 
-const esc = (s: string) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-
+/** Enquiries are delivered by FormSubmit (https://formsubmit.co) to the business inbox, called from the server so the address never reaches the browser. */
 export function emailConfig() {
-  const apiKey = process.env.EMAIL_API_KEY?.trim();
-  const from = process.env.EMAIL_FROM?.trim();
   const to = site.contactEmail;
-  return apiKey && from && to ? { apiKey, from, to } : null;
+  return to ? { to } : null;
 }
 
 const rows = (e: EnquiryInput): [string, string][] => [
@@ -23,32 +19,28 @@ const rows = (e: EnquiryInput): [string, string][] => [
   ["Message", e.message],
 ];
 
-/** Sends the enquiry to the business inbox via Resend. Throws on any non-2xx so callers never report false success. */
+/** Sends the enquiry to the business inbox via FormSubmit. Throws unless FormSubmit confirms success, so callers never report false success. */
 export async function sendEnquiryEmail(e: EnquiryInput): Promise<void> {
   const cfg = emailConfig();
   if (!cfg) throw new Error("Email is not configured");
 
-  const filled = rows(e).filter(([, v]) => v);
-  const html = `<h2>New Morocco trip enquiry</h2><table cellpadding="6">${filled
-    .map(([k, v]) => `<tr><td><strong>${esc(k)}</strong></td><td>${esc(v).replace(/\n/g, "<br>")}</td></tr>`)
-    .join("")}</table>`;
-  const text = filled.map(([k, v]) => `${k}: ${v}`).join("\n");
-
-  const res = await fetch("https://api.resend.com/emails", {
+  // "name" and "email" are lower-case on purpose: FormSubmit uses "email" as the reply-to address.
+  const fields = { name: e.name, email: e.email, ...Object.fromEntries(rows(e).filter(([k, v]) => v && k !== "Name" && k !== "Email")) };
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(cfg.to)}`, {
     method: "POST",
-    headers: { Authorization: `Bearer ${cfg.apiKey}`, "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", Accept: "application/json", Origin: site.url, Referer: `${site.url}/contact` },
     body: JSON.stringify({
-      from: cfg.from,
-      to: [cfg.to],
-      reply_to: e.email,
-      subject: `New enquiry from ${e.name.replace(/[\r\n]+/g, " ")}`,
-      html,
-      text,
+      ...fields,
+      _subject: `New enquiry from ${e.name.replace(/[\r\n]+/g, " ")}`,
+      _template: "table",
+      _captcha: "false",
     }),
     signal: AbortSignal.timeout(10_000),
   });
 
-  if (!res.ok) {
+  const result = (await res.json().catch(() => null)) as { success?: unknown } | null;
+  const ok = res.ok && (result?.success === true || result?.success === "true");
+  if (!ok) {
     // Log status only server-side; never leak provider details or PII to the visitor.
     console.error(`[enquiry] email provider responded ${res.status}`);
     throw new Error(`Email provider error ${res.status}`);

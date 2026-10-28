@@ -104,6 +104,8 @@ test.describe("enquiry form", () => {
   }
 
   test("does NOT show success when the server cannot deliver (unconfigured)", async ({ page }) => {
+    // Stubbed so the test never sends a real enquiry through the email provider.
+    await page.route("**/api/enquiry", (r) => r.fulfill({ status: 503, json: { ok: false, code: "not_configured", message: "Our enquiry form isn't fully set up yet. Please contact us by email or WhatsApp instead." } }));
     await fill(page);
     await page.getByRole("button", { name: "Send my enquiry" }).click();
     await expect(page.locator("#form-status")).toContainText("isn't fully set up");
