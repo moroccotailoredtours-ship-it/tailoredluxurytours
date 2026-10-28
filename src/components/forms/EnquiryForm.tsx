@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
-import { enquirySchema, fieldErrors, type EnquiryResult, type FieldErrors } from "@/lib/enquiry";
+import { enquirySchema, fieldErrors, type FieldErrors } from "@/lib/enquiry";
+import { sendEnquiry } from "@/lib/formsubmit";
 import { track } from "@/lib/analytics";
 import { buttonClass } from "@/components/ui/Button";
 
@@ -27,7 +28,7 @@ function Field({ id, label, optional, error, children }: { id: string; label: st
   );
 }
 
-export function EnquiryForm({ defaultMessage = "", source }: { defaultMessage?: string; source?: string }) {
+export function EnquiryForm({ defaultMessage = "", source, deliverTo }: { defaultMessage?: string; source?: string; deliverTo?: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [banner, setBanner] = useState("");
@@ -52,27 +53,30 @@ export function EnquiryForm({ defaultMessage = "", source }: { defaultMessage?: 
       return;
     }
 
+    // Spam traps: a filled honeypot, or a submission faster than a human could complete the form.
+    // Pretend success so bots learn nothing, but deliver nothing.
+    if (parsed.data.website || Date.now() - startedAt < 2500) {
+      setStatus("success");
+      return;
+    }
+
+    if (!deliverTo) {
+      setBanner("Our enquiry form isn't fully set up yet. Please contact us by email or WhatsApp instead.");
+      setStatus("error");
+      return;
+    }
+
     inFlight.current = true;
     setErrors({});
     setBanner("");
     setStatus("submitting");
     try {
-      const res = await fetch("/api/enquiry", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(parsed.data) });
-      const result = (await res.json()) as EnquiryResult;
-      if (res.ok && result.ok) {
+      if (await sendEnquiry(deliverTo, parsed.data)) {
         track("enquiry_submit", source ? { source } : undefined);
         setStatus("success");
         return;
       }
-      if (!result.ok && result.code === "validation") {
-        setErrors(result.errors);
-        setBanner("Please check the highlighted fields and try again.");
-      } else {
-        setBanner(!result.ok && "message" in result ? result.message : "Something went wrong. Please try again.");
-      }
-      setStatus("error");
-    } catch {
-      setBanner("We couldn't reach the server. Please check your connection and try again.");
+      setBanner("We couldn't send your enquiry just now. Please try again in a moment, or contact us directly.");
       setStatus("error");
     } finally {
       inFlight.current = false;

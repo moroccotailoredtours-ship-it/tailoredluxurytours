@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <li><strong>Contact details:</strong> your name and email address, plus a phone or WhatsApp number if you choose to give one.</li>
             <li><strong>Trip details:</strong> where and when you want to travel, for how long, how many of you are going, your interests and budget, the country you are travelling from, and anything you add in your message.</li>
             <li><strong>Correspondence:</strong> whatever you send us through the form, by email or on WhatsApp, including special requirements.</li>
-            <li><strong>Technical data:</strong> our servers may handle your IP address in order to serve pages and block spam. We use it only for short-lived rate limiting.</li>
+            <li><strong>Technical data:</strong> our hosting provider and our cookie-free analytics may process technical information such as your IP address, device, browser and the pages you visit, in order to serve the site and measure how fast it loads.</li>
             <li><strong>Payments:</strong> this website never collects or stores card numbers. Deposits are taken through PayPal or a payment link we send, and those services have their own privacy policies.</li>
           </ul>
 
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
           <p>We never sell, trade or rent personal information. We pass it on only to:</p>
           <ul>
             <li><strong>Guides, drivers and hotels:</strong> the information they need to look after you, for example your name, party size, dietary needs, arrival details and dates.</li>
-            <li><strong>Service providers:</strong> FormSubmit delivers your enquiry to our inbox, Vercel hosts the site and PayPal handles deposits. Each uses your data only to deliver its service.{site.plausibleDomain ? " Plausible Analytics supplies cookie-free statistics and never receives your name, email or message." : ""}</li>
+            <li><strong>Service providers:</strong> FormSubmit receives your enquiry directly from your browser and delivers it to our inbox, Vercel hosts the site and provides cookie-free page-view and speed statistics, and PayPal handles deposits. Each uses your data only to deliver its service.{site.plausibleDomain ? " Plausible Analytics supplies cookie-free statistics and never receives your name, email or message." : ""}</li>
             <li><strong>Authorities:</strong> when the law obliges us to.</li>
           </ul>
           <p>Other websites we link to have their own privacy policies.</p>

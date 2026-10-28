@@ -27,7 +27,7 @@ Until `CONTACT_EMAIL` is set, `/api/enquiry` returns 503 and the form shows an e
 
 ## Enquiry flow
 
-Form (`src/components/forms/EnquiryForm.tsx`) → client validation (Zod) → `POST /api/enquiry` → server validation, same-origin check, honeypot + minimum-fill-time trap, in-memory rate limit (5 / 10 min / IP) → FormSubmit (called from the server, so the inbox address stays out of the browser). Success is shown only when FormSubmit confirms. The rate limiter is per-instance memory; use a shared store (Upstash/KV) for stronger protection on serverless.
+Form (`src/components/forms/EnquiryForm.tsx`) → client validation (Zod), honeypot + minimum-fill-time trap → the visitor's browser posts to FormSubmit (`src/lib/formsubmit.ts`). FormSubmit rejects requests from cloud servers with 403, so this cannot run in an API route. Success is shown only when FormSubmit confirms. Vercel Web Analytics and Speed Insights are enabled in `src/app/layout.tsx`.
 
 ## Content
 

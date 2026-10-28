@@ -13,6 +13,8 @@ function collectErrors(page: Page) {
 
 test("every route renders one H1, has a canonical, and logs no errors", async ({ page }) => {
   test.setTimeout(120_000);
+  // Vercel Analytics and Speed Insights scripts only exist on Vercel's servers.
+  await page.route("**/_vercel/**", (r) => r.fulfill({ contentType: "application/javascript", body: "" }));
   const errors = collectErrors(page);
   for (const path of routes) {
     await page.goto(path, { waitUntil: "networkidle" });
@@ -103,24 +105,24 @@ test.describe("enquiry form", () => {
     await page.getByRole("checkbox").check();
   }
 
-  test("does NOT show success when the server cannot deliver (unconfigured)", async ({ page }) => {
+  test("does NOT show success when FormSubmit refuses (for example, not activated)", async ({ page }) => {
     // Stubbed so the test never sends a real enquiry through the email provider.
-    await page.route("**/api/enquiry", (r) => r.fulfill({ status: 503, json: { ok: false, code: "not_configured", message: "Our enquiry form isn't fully set up yet. Please contact us by email or WhatsApp instead." } }));
+    await page.route("**/formsubmit.co/**", (r) => r.fulfill({ json: { success: "false", message: "This form needs Activation." } }));
     await fill(page);
     await page.getByRole("button", { name: "Send my enquiry" }).click();
-    await expect(page.locator("#form-status")).toContainText("isn't fully set up");
+    await expect(page.locator("#form-status")).toContainText("couldn't send");
     await expect(page.getByText("Your enquiry has been sent")).toHaveCount(0);
   });
 
   test("shows success only after the server accepts", async ({ page }) => {
-    await page.route("**/api/enquiry", (r) => r.fulfill({ json: { ok: true } }));
+    await page.route("**/formsubmit.co/**", (r) => r.fulfill({ json: { success: "true", message: "ok" } }));
     await fill(page);
     await page.getByRole("button", { name: "Send my enquiry" }).click();
     await expect(page.getByRole("status")).toContainText("Your enquiry has been sent");
   });
 
   test("shows a failure message when delivery fails", async ({ page }) => {
-    await page.route("**/api/enquiry", (r) => r.fulfill({ status: 502, json: { ok: false, code: "delivery_failed", message: "We couldn't send your enquiry just now." } }));
+    await page.route("**/formsubmit.co/**", (r) => r.fulfill({ status: 500, json: { success: "false" } }));
     await fill(page);
     await page.getByRole("button", { name: "Send my enquiry" }).click();
     await expect(page.locator("#form-status")).toContainText("couldn't send");

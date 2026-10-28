@@ -3,7 +3,6 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { EmailLink, WhatsAppButton } from "@/components/ui/ContactLinks";
 import { Faq } from "@/components/ui/Faq";
-import { emailConfig } from "@/lib/email";
 import { getTour, homeFaqs } from "@/content";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMetadata, webPageLd } from "@/lib/seo";
@@ -22,7 +21,7 @@ export default async function ContactPage({ searchParams }: Props) {
   const tour = getTour(Array.isArray(raw) ? (raw[0] ?? "") : (raw ?? ""));
   const defaultMessage = tour ? `I'm interested in the "${tour.title}" itinerary (${tour.days} days from ${tour.start}). ` : "";
   const missing = [
-    !emailConfig() && "email delivery (CONTACT_EMAIL)",
+    !site.contactEmail && "enquiry delivery (CONTACT_EMAIL)",
     !whatsappHref() && "WhatsApp (NEXT_PUBLIC_WHATSAPP_NUMBER)",
   ].filter(Boolean);
 
@@ -52,7 +51,7 @@ export default async function ContactPage({ searchParams }: Props) {
             )}
           </div>
           <div className="lg:col-span-7">
-            <EnquiryForm defaultMessage={defaultMessage} source={tour?.slug ?? "contact"} />
+            <EnquiryForm defaultMessage={defaultMessage} source={tour?.slug ?? "contact"} deliverTo={site.contactEmail || undefined} />
           </div>
         </div>
 
