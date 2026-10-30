@@ -37,10 +37,23 @@ export interface Tour {
   seo: Seo;
 }
 
+/** Approximate driving leg: road km and driving minutes, no stops. */
+export interface Drive {
+  km: number;
+  minutes: number;
+}
+
+/** Approximate driving leg: road km and driving minutes, no stops. */
+export interface Drive {
+  km: number;
+  minutes: number;
+}
+
 export interface ItineraryDay {
   day: number;
   title: string;
   body: string;
+  drive?: Drive;
 }
 
 export interface Destination {

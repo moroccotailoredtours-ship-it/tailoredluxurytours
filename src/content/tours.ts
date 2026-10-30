@@ -1,5 +1,6 @@
 import type { Img, Tour, Theme } from "@/lib/types";
 import { images } from "./images";
+import { driveFor } from "./drives";
 import generated from "./itineraries.generated.json";
 
 /**
@@ -94,7 +95,7 @@ export const allTours: Tour[] = (generated as Raw[]).map((t) => {
     summary,
     image: coverOverrides[t.slug] ?? coverFor(t),
     intro: t.intro || `This ${t.days}-day itinerary begins in ${t.start} and moves through ${list(places.slice(0, 5))}. Treat it as a starting point: dates, pace and stops can all be adjusted around you.`,
-    itinerary: t.itinerary,
+    itinerary: t.itinerary.map((day) => ({ ...day, drive: driveFor(t.slug, day.day, day.title) })),
     destinations: t.destinations,
     experiences: expFor(t.themes),
     themes: t.themes,
